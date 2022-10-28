@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
     <div id="app">
-        <div v-for="post in posts">
-           <p>
-            <h1>{{ post.title }}</h1>
-           </p>
-           <p>{{ post.body }}</p>
-        </div>        
+       <div v-for="post in posts">
+          <p> <h1> {{ post.title }}</h1></p>
+            <p>{{ post.body }}</p>
+       </div>     
     </div>
 
         
@@ -24,18 +23,13 @@
             el: '#app',
             data: {
                 posts:[],
-         },
+            },
 
-         mounted(){
-            this.posts= [
-                {
-                    id:1,title:'this is first title',body:'this is the first body'
-                },
-                {
-                    id:2,title:'this is second title',body:'this is the second body'
-                },
-            ]
-         }
+            mounted(){
+                axios.get('https://jsonplaceholder.typicode.com/posts').then((response)=>{
+                    this.posts = response.data
+                })
+            }
 
         })
         
