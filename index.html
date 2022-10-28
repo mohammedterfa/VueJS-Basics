@@ -5,31 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 </head>
 <body>
     <div id="app">
-        <p v-if="taskCompleted">
+        <p>
             {{ message }}
         </p>
-        <p v-else>
-            Task is not complated
-        </p>
+        
     </div>
 
         
     <script>
-        const { createApp } = Vue
-      
-        createApp({
-          data() {
-            return {
-              message: 'Hello Vue!',
-              taskCompleted:false,
-            }
-          }
-        }).mount('#app')
+        var app = new Vue({
+            el: '#app',
+            data: {
+                 message: 'Hello Vue!'
+         },
+
+         created(){
+            alert("created")
+         },
+
+         beforeCreate(){
+            alert("before created")
+         },
+
+         mounted(){
+            alert("after mounted")
+         },
+
+         beforeMount(){
+            alert('before mount')
+         }
+        })
+        
       </script>
     
 </body>
