@@ -10,10 +10,12 @@
 </head>
 <body>
     <div id="app">
-        <p>
-            {{ message }}
-        </p>
-        
+        <div v-for="post in posts">
+           <p>
+            <h1>{{ post.title }}</h1>
+           </p>
+           <p>{{ post.body }}</p>
+        </div>        
     </div>
 
         
@@ -21,24 +23,20 @@
         var app = new Vue({
             el: '#app',
             data: {
-                 message: 'Hello Vue!'
-         },
-
-         created(){
-            alert("created")
-         },
-
-         beforeCreate(){
-            alert("before created")
+                posts:[],
          },
 
          mounted(){
-            alert("after mounted")
-         },
-
-         beforeMount(){
-            alert('before mount')
+            this.posts= [
+                {
+                    id:1,title:'this is first title',body:'this is the first body'
+                },
+                {
+                    id:2,title:'this is second title',body:'this is the second body'
+                },
+            ]
          }
+
         })
         
       </script>
